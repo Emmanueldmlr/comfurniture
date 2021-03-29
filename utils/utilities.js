@@ -23,3 +23,9 @@ export const getCartItem = () => {
     return localStorage.getItem(process.env.cartId)
 }
 
+export const fetchFirstNthItems = (items, number) => {
+    if (items.length < number) return items
+    return items.slice(0, number).map(i => {
+        return i
+    })
+}

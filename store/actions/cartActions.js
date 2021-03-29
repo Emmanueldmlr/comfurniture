@@ -26,15 +26,22 @@ export const addProductToCart = (product, qty) => {
       }]
     }
     else{
-      const newItem = {
-        productId: product.productId,
-        productDescription: product.productDescription,
-        productName : product.productName,
-        quantity: qty,
-        productPrice: product.productPrice,
-        totalPrice: product.productPrice * qty
+      const checkProduct = cart.findIndex(prod => prod.Id == product.productId)
+      if(checkProduct < 0 ){
+        const newItem = {
+          productId: product.productId,
+          productDescription: product.productDescription,
+          productName : product.productName,
+          quantity: qty,
+          productPrice: product.productPrice,
+          totalPrice: product.productPrice * qty
+        }
+        cart.push(newItem)
       }
-      cart.push(newItem)
+      else{
+        cart[checkProduct].quantity = qty
+        cart[checkProduct].totalPrice =  product.productPrice * qty
+      } 
     }
     dispatch(saveCartItemToStore(cart))
     await saveCartItem(JSON.stringify(cart))

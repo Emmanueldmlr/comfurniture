@@ -20,7 +20,7 @@ const Topper = () => {
         <div class="row align-self-center">
             <div class="col-auto align-self-center">
                 <div class="header-logo">
-                    <a href="index.html"><img src="static/assets/images/logo/logo.png" alt="Site Logo" /></a>
+                    <a href="index.html"><img src="../static/assets/images/logo/logo.png" alt="Site Logo" /></a>
                 </div>
             </div>
 
@@ -51,8 +51,13 @@ const Topper = () => {
                     </div>
                     <a href="#offcanvas-cart" class="header-action-btn header-action-btn-cart offcanvas-toggle pr-0">
                         <i class="icon-handbag"></i>
-                        <span class="header-action-num">{cart && cart.length}</span>
-                         <span class="cart-amount">₦{cart && calcTotalCartPrice(cart)}</span>
+                         {
+                             cart &&
+                              <>
+                              <span class="header-action-num">{cart && cart.length}</span>
+                              <span class="cart-amount">₦{cart && calcTotalCartPrice(cart)}</span>
+                              </>
+                         }
                     </a>
                     <a href="#offcanvas-mobile-menu" class="header-action-btn header-action-btn-menu offcanvas-toggle d-lg-none">
                         <i class="icon-menu"></i>

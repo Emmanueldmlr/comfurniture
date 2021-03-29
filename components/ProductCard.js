@@ -1,4 +1,5 @@
 
+import Link from 'next/link'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addProductToCart, deleteProductFromCart } from '../store/actions/cartActions'
@@ -13,14 +14,18 @@ const ProductCard = ({product, productInCart}) => {
         dispatch(deleteProductFromCart(product.productId))
    }
 
+ 
+
     return (
         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6" data-aos="fade-up" data-aos-delay="200">
             <div class="product">
                 <div class="thumb">
-                    <a href="shop-left-sidebar.html" class="image">
-                        <img src={"static/assets/images/product-image/" + product.productPicture } alt="Product" />
-                        <img class="hover-image" src={"static/assets/images/product-image/" + product.productPicture } alt="Product" />
-                    </a>
+                    <Link href={"/products/" + product.productId}>
+                        <a href="#" class="image">
+                            <img src={"../static/assets/images/product-image/" + product.productPicture } alt="Product" />
+                            <img class="hover-image" src={"../static/assets/images/product-image/" + product.productPicture } alt="Product" />
+                        </a>
+                    </Link>
                     <span class="badges">
                         <span class="new">New</span>
                     </span>
@@ -39,7 +44,11 @@ const ProductCard = ({product, productInCart}) => {
                     
                 </div>
                 <div class="content">
-                    <h5 class="title"><a href="shop-left-sidebar.html">{product.productName}</a></h5>
+                    <h5 class="title">
+                        <Link href={"/products/" + product.productId}>
+                             <a href="#">{product.productName}</a>
+                        </Link>
+                    </h5>
                     <span class="price">
                         <span class="new">₦{product.productPrice}</span>
                     </span>
