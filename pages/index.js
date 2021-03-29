@@ -1,65 +1,217 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Wrapper from '../part/Wrapper'
+import React, { useState, useEffect } from 'react';
+import CardComponent from '../components/ProductCard';
+import CategoryCard from '../components/CategoryCard';
+import  Slider  from '../components/Slider';
+import ProductCard from '../components/ProductCard';
+import { useSelector, useDispatch } from 'react-redux';
+import { getProducts } from '../store/actions/productActions';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import { fetchCart } from '../store/actions/cartActions';
+import Alert from '../components/widget/Alert'
+const Home = () => {
+    const {products, isLoading}  = useSelector(state => state.products)
+    const {cart, cartMsg}  = useSelector(state => state.cart)
+    const dispatch = useDispatch();
+    useEffect(() => {
+        if(!products){
+            dispatch(getProducts())
+        } 
+        if(!cart){
+            dispatch(fetchCart())
+        }
+    }, [])
 
-export default function Home() {
+    const findProductInCart = (productId)=>{
+        const productInCart = cart && cart.find(prod => prod.productId == productId)
+        return productInCart ? true : false
+    }
+
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+    <>
+    <Slider/>
+    {cartMsg ? <Alert key={new Date()} payload={cartMsg} /> : null}
+    <div class="section pb-100px pt-100px">
+        <div class="container">
+            <div class="row">
+                <CategoryCard/>
+                <CategoryCard/>
+                <CategoryCard/>
+            </div>
         </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
     </div>
+    <div class="section pb-100px">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12" data-aos="fade-up">
+                    <div class="section-title text-center mb-11">
+                        <h2 class="title">Our Products</h2>
+                        <p class="sub-title">Torem ipsum dolor sit amet, consectetur adipisicing elitsed do eiusmo tempor incididunt ut labore
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col">
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="tab-product-new-arrivals">
+                            <div class="row">
+                                {
+                                    isLoading ? 
+                                    <div class=" text-center">
+                                         <CircularProgress />
+                                    </div>
+                                    :
+                                    products ? 
+                                     products.map(product => (
+                                        <ProductCard productInCart={findProductInCart(product.productId)} product= {product}/>
+                                     ))
+                                    :
+                                    <div class=" text-center">
+                                         <p>No Products Found</p>
+                                    </div>  
+                                }
+                            </div>
+                        </div>                        
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">x</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-5 col-sm-12 col-xs-12 mb-lm-30px mb-sm-30px">
+                            <div class="swiper-container gallery-top mb-4">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <img class="img-responsive m-auto" src="assets/images/product-image/1.jpg" alt=""/>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img class="img-responsive m-auto" src="assets/images/product-image/2.jpg" alt=""/>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img class="img-responsive m-auto" src="assets/images/product-image/3.jpg" alt=""/>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img class="img-responsive m-auto" src="assets/images/product-image/4.jpg" alt=""/>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img class="img-responsive m-auto" src="assets/images/product-image/5.jpg" alt=""/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-container gallery-thumbs slider-nav-style-1 small-nav">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <img class="img-responsive m-auto" src="assets/images/product-image/1.jpg" alt=""/>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img class="img-responsive m-auto" src="assets/images/product-image/2.jpg" alt=""/>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img class="img-responsive m-auto" src="assets/images/product-image/3.jpg" alt=""/>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img class="img-responsive m-auto" src="assets/images/product-image/4.jpg" alt=""/>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img class="img-responsive m-auto" src="assets/images/product-image/5.jpg" alt=""/>
+                                    </div>
+                                </div>
+                                <div class="swiper-buttons">
+                                    <div class="swiper-button-next"></div>
+                                    <div class="swiper-button-prev"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-7 col-sm-12 col-xs-12">
+                            <div class="product-details-content quickview-content">
+                                <h2>Originals Kaval Windbr</h2>
+                                <p class="reference">Reference:<span> demo_17</span></p>
+                                <div class="pro-details-rating-wrap">
+                                    <div class="rating-product">
+                                        <i class="ion-android-star"></i>
+                                        <i class="ion-android-star"></i>
+                                        <i class="ion-android-star"></i>
+                                        <i class="ion-android-star"></i>
+                                        <i class="ion-android-star"></i>
+                                    </div>
+                                    <span class="read-review"><a class="reviews" href="#">Read reviews (1)</a></span>
+                                </div>
+                                <div class="pricing-meta">
+                                    <ul>
+                                        <li class="old-price not-cut">$18.90</li>
+                                    </ul>
+                                </div>
+                                <p class="quickview-para">Lorem ipsum dolor sit amet, consectetur adipisic elit eiusm tempor incidid ut labore et dolore magna aliqua. Ut enim ad minim venialo quis nostrud exercitation ullamco</p>
+                                <div class="pro-details-size-color">
+                                    <div class="pro-details-color-wrap">
+                                        <span>Color</span>
+                                        <div class="pro-details-color-content">
+                                            <ul>
+                                                <li class="blue"></li>
+                                                <li class="maroon active"></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pro-details-quality">
+                                    <div class="cart-plus-minus">
+                                        <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1" />
+                                    </div>
+                                    <div class="pro-details-cart btn-hover">
+                                        <button class="add-cart btn btn-primary btn-hover-primary ml-4"> Add To
+                                            Cart</button>
+                                    </div>
+                                </div>
+                                <div class="pro-details-wish-com">
+                                    <div class="pro-details-wishlist">
+                                        <a href="wishlist.html"><i class="ion-android-favorite-outline"></i>Add to
+                                            wishlist</a>
+                                    </div>
+                                    <div class="pro-details-compare">
+                                        <a href="compare.html"><i class="ion-ios-shuffle-strong"></i>Add to compare</a>
+                                    </div>
+                                </div>
+                                <div class="pro-details-social-info">
+                                    <span>Share</span>
+                                    <div class="social-info">
+                                        <ul>
+                                            <li>
+                                                <a href="#"><i class="ion-social-facebook"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="ion-social-twitter"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="ion-social-google"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="ion-social-instagram"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </>
   )
 }
+
+export default Wrapper(Home)
