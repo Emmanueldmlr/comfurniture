@@ -71,9 +71,9 @@ const Cart = () => {
                                         <div class="title-wrap">
                                             <h4 class="cart-bottom-title section-bg-gary-cart">Cart Total</h4>
                                         </div>
-                                        <h5>Total products <span>{calcTotalCartPrice(cart)}</span></h5>
+                                        <h5>Total products <span>{cart && calcTotalCartPrice(cart)}</span></h5>
                                     
-                                        <h4 class="grand-totall-title">Grand Total <span>{calcTotalCartPrice(cart)}</span></h4>
+                                        <h4 class="grand-totall-title">Grand Total <span>{cart && calcTotalCartPrice(cart)}</span></h4>
                                         <a href="#">Proceed to Checkout</a>
                                     </div>
                                 </div>

@@ -5,10 +5,10 @@ import { fetchCart } from '../store/actions/cartActions'
 import { calcTotalCartPrice } from '../utils/cart'
 
 const HeaderIcon = () => {
-    const {cart}  = useSelector(state => state.cart)
+    const { cart } = useSelector(state => state.cart)
     const dispatch = useDispatch();
     useEffect(() => {
-        if(!cart){
+        if (!cart) {
             dispatch(fetchCart())
         }
     }, [])
@@ -39,8 +39,7 @@ const HeaderIcon = () => {
                                     class="icon-user"></i></button>
                                 <ul class="dropdown-menu dropdown-menu-right">
                                     <li><a class="dropdown-item" href="my-account.html">My account</a></li>
-                                    <li><a class="dropdown-item" href="checkout.html">Checkout</a></li>
-                                    <li><a class="dropdown-item" href="login.html">Sign in</a></li>
+                                  
                                 </ul>
                             </div>
                             <a href="#offcanvas-cart" class="header-action-btn header-action-btn-cart offcanvas-toggle pr-0">
@@ -48,8 +47,8 @@ const HeaderIcon = () => {
                                 {
                                     cart &&
                                     <>
-                                    <span class="header-action-num">{cart && cart.length}</span>
-                                    <span class="cart-amount">₦{cart && calcTotalCartPrice(cart)}</span>
+                                        <span class="header-action-num">{cart && cart.length}</span>
+                                        <span class="cart-amount">₦{cart && calcTotalCartPrice(cart)}</span>
                                     </>
                                 }
                             </a>
@@ -96,8 +95,8 @@ const HeaderIcon = () => {
                                         {
                                             cart &&
                                             <>
-                                            <span class="header-action-num">{cart && cart.length}</span>
-                                            <span class="cart-amount">₦{cart && calcTotalCartPrice(cart)}</span>
+                                                <span class="header-action-num">{cart && cart.length}</span>
+                                                <span class="cart-amount">₦{cart && calcTotalCartPrice(cart)}</span>
                                             </>
                                         }
                                     </a>

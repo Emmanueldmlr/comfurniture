@@ -1,19 +1,20 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import Link from 'next/link'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchCart } from '../store/actions/cartActions'
 import { calcTotalCartPrice } from '../utils/cart'
+import { logout } from '../store/actions/authActions'
 
-const Topper = () => {
-    const {cart}  = useSelector(state => state.cart)
+const Topper = ({ user }) => {
+    const { cart } = useSelector(state => state.cart)
     const dispatch = useDispatch();
     useEffect(() => {
-        if(!cart){
+        if (!cart) {
             dispatch(fetchCart())
         }
     }, [])
 
-   
+
 
     return (
 
@@ -40,28 +41,36 @@ const Topper = () => {
                         <button class="dropdown-toggle header-action-btn" data-bs-toggle="dropdown"><i
                             class="icon-user"></i></button>
                         <ul class="dropdown-menu dropdown-menu-right">
-                            <li><a class="dropdown-item" href="my-account.html">My account</a></li>
-                            <li><a class="dropdown-item" href="checkout.html">Checkout</a></li>
-                            <li>
-                                <Link href='/login'>
-                                           <a class="dropdown-item" href="">Sign In</a>
+                            {
+                                !user &&
+                                <li>
+                                    <Link href='/login'>
+                                        <a class="dropdown-item" href="">Login</a>
                                     </Link>
-                            </li>
+                                </li>
+                            }
+                            {
+                                user &&
+                                <li>
+                                    <a onClick={() => dispatch(logout())} class="dropdown-item" href="">Logout</a>
+                                </li>
+
+                            }
                         </ul>
                     </div>
                     <Link href="/cart">
-                        <a href="#" class="header-action-btn header-action-btn-cart offcanvas-toggle pr-0">
+                        <a href="#" class="header-action-btn header-action-btn-cart  pr-0">
                             <i class="icon-handbag"></i>
                             {
                                 cart &&
                                 <>
-                                <span class="header-action-num">{cart && cart.length}</span>
-                                <span class="cart-amount">₦{cart && calcTotalCartPrice(cart)}</span>
+                                    <span class="header-action-num">{cart && cart.length}</span>
+                                    <span class="cart-amount">₦{cart && calcTotalCartPrice(cart)}</span>
                                 </>
                             }
                         </a>
                     </Link>
-                    <a href="#offcanvas-mobile-menu" class="header-action-btn header-action-btn-menu offcanvas-toggle d-lg-none">
+                    <a href="#offcanvas-mobile-menu" class="header-action-btn header-action-btn-menu  d-lg-none">
                         <i class="icon-menu"></i>
                     </a>
                 </div>
