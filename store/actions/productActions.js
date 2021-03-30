@@ -14,7 +14,7 @@ export const getProducts = () => {
         dispatch(toggleIsLoading());
       })
       .catch((err) => {
-        dispatch(updateMsg(err.response.data.message))
+        dispatch(updateMsg( err.response ? err.response.data.message: "Action could not be  performed"))
         dispatch(toggleIsLoading());
       });
   };

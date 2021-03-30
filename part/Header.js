@@ -6,14 +6,19 @@ import Link from 'next/link'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchCart } from '../store/actions/cartActions'
 import { calcTotalCartPrice } from '../utils/cart'
+import { getUser } from '../store/actions/authActions'
 
 
 const Header = () => {
     const {cart}  = useSelector(state => state.cart)
+    const {user}  = useSelector(state => state.auth)
     const dispatch = useDispatch();
     useEffect(() => {
         if(!cart){
             dispatch(fetchCart())
+        }
+        if(!user){
+           dispatch( getUser())
         }
     }, [])
     return (

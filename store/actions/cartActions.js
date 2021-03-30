@@ -4,10 +4,10 @@ import Router from 'next/router';
 
 export const fetchCart = () => {
   return async (dispatch) => {
-    await dispatch(toggleIsLoading());
+    //await dispatch(toggleIsLoading());
     let cart = await JSON.parse(getCartItem())
-    dispatch(saveCartItemToStore(cart))
-    await dispatch(toggleIsLoading());
+    await dispatch(saveCartItemToStore(cart))
+    //await dispatch(toggleIsLoading());
   };
 };
 

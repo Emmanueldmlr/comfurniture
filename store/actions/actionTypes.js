@@ -3,3 +3,6 @@ export const SAVE_PRODUCTS = 'SAVE_PRODUCTS';
 export const UPDATE_MSG = 'UPDATE_MSG';
 export const UPDATE_CART_MSG = 'UPDATE_CART_MSG';
 export const SAVE_CART = 'SAVE_CART';
+export const UPDATE_AUTH_MSG = 'UPDATE_AUTH_MSG';
+export const UPDATE_USER_INFO = 'UPDATE_USER_INFO';
+export const CLEAR_USER_DETAILS = 'CLEAR_USER_DETAILS';

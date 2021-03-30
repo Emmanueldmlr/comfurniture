@@ -5,14 +5,13 @@ import Others from './Others';
 
 
 export default function Wrapper(AuthComponent) {
-
+    
     return class LandingWrapper extends Component {
      
       constructor(props) {
         super(props)
 
       }
-
       render() {
         return (
           <>
