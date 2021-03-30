@@ -22,11 +22,13 @@ export const addProductToCart = (product, qty) => {
         productName : product.productName,
         quantity: qty,
         productPrice: product.productPrice,
-        totalPrice: product.productPrice * qty
+        totalPrice: product.productPrice * qty,
+        productPicture: product.productPicture
+
       }]
     }
     else{
-      const checkProduct = cart.findIndex(prod => prod.Id == product.productId)
+      const checkProduct = cart.findIndex(prod => prod.productId == product.productId)
       if(checkProduct < 0 ){
         const newItem = {
           productId: product.productId,
@@ -34,7 +36,8 @@ export const addProductToCart = (product, qty) => {
           productName : product.productName,
           quantity: qty,
           productPrice: product.productPrice,
-          totalPrice: product.productPrice * qty
+          totalPrice: product.productPrice * qty,
+          productPicture: product.productPicture
         }
         cart.push(newItem)
       }

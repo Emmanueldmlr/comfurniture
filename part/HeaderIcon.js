@@ -90,11 +90,18 @@ const HeaderIcon = () => {
                                         <li><a class="dropdown-item" href="login.html">Sign in</a></li>
                                     </ul>
                                 </div>
-                                <a href="#offcanvas-cart" class="header-action-btn header-action-btn-cart offcanvas-toggle pr-0">
-                                    <i class="icon-handbag"></i>
-                                    <span class="header-action-num">{cart && cart.length}</span>
-                                    <span class="cart-amount">₦{cart && calcTotalCartPrice(cart)}</span>
-                                </a>
+                                <Link href="/cart">
+                                    <a href="#" class="header-action-btn header-action-btn-cart offcanvas-toggle pr-0">
+                                        <i class="icon-handbag"></i>
+                                        {
+                                            cart &&
+                                            <>
+                                            <span class="header-action-num">{cart && cart.length}</span>
+                                            <span class="cart-amount">₦{cart && calcTotalCartPrice(cart)}</span>
+                                            </>
+                                        }
+                                    </a>
+                                </Link>
                                 <a href="#offcanvas-mobile-menu" class="header-action-btn header-action-btn-menu offcanvas-toggle d-lg-none">
                                     <i class="icon-menu"></i>
                                 </a>
