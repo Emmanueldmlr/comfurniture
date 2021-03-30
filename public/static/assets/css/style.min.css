@@ -11738,17 +11738,18 @@ body.offcanvas-open {
     cursor: pointer;
     background-color: transparent;
 }
-.offcanvas.offcanvas-mobile-menu {
-    right: auto;
-    left: 0;
-    padding: 0;
-    transform: translateX(-100%);
-    width: 350px;
-    padding: 50px 30px;
-}
+
 @media only screen and (max-width: 479px) {
     .offcanvas.offcanvas-mobile-menu {
         width: 300px;
+    }
+    .offcanvas.offcanvas-mobile-menu {
+        right: auto;
+        left: -200px;
+        padding: 0;
+        /* transform: translateX(-100%); */
+        width: 350px;
+        padding: 50px 30px;
     }
 }
 .offcanvas.offcanvas-mobile-menu .offcanvas-close {

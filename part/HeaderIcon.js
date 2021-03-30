@@ -18,7 +18,9 @@ const HeaderIcon = () => {
                 <div class="row align-self-center">
                     <div class="col-auto align-self-center">
                         <div class="header-logo">
-                            <a href="index.html"><img src="../assets/images/logo/logo.png" alt="Site Logo" /></a>
+                        <Link href='/'>
+                            <a href="#"><h3 style={{fontWeight: 'bolder'}}><span style={{color: '#ff7004'}}>my</span>Furn</h3></a>
+                        </Link>
                         </div>
                     </div>
 
@@ -64,7 +66,9 @@ const HeaderIcon = () => {
                     <div class="row align-self-center">
                         <div class="col-auto align-self-center">
                             <div class="header-logo">
-                                <a href="index.html"><img src="../assets/images/logo/logo.png" alt="Site Logo" /></a>
+                            <Link href='/'>
+                                <a href="#"><h3 style={{fontWeight: 'bolder'}}><span style={{color: '#ff7004'}}>my</span>Furn</h3></a>
+                            </Link>
                             </div>
                         </div>
 
@@ -89,18 +93,21 @@ const HeaderIcon = () => {
                                         <li><a class="dropdown-item" href="login.html">Sign in</a></li>
                                     </ul>
                                 </div>
-                                <Link href="/cart">
-                                    <a href="#" class="header-action-btn header-action-btn-cart offcanvas-toggle pr-0">
-                                        <i class="icon-handbag"></i>
-                                        {
-                                            cart &&
-                                            <>
-                                                <span class="header-action-num">{cart && cart.length}</span>
-                                                <span class="cart-amount">₦{cart && calcTotalCartPrice(cart)}</span>
-                                            </>
-                                        }
-                                    </a>
-                                </Link>
+                                {
+                                    cart &&
+                                    <Link href="/cart">
+                                        <a href="#" class="header-action-btn header-action-btn-cart  pr-0">
+                                            <i class="icon-handbag"></i>
+                                            {
+                                                cart &&
+                                                <>
+                                                    <span class="header-action-num">{cart && cart.length}</span>
+                                                    <span class="cart-amount">₦{cart && calcTotalCartPrice(cart)}</span>
+                                                </>
+                                            }
+                                        </a>
+                                    </Link>
+                                }
                                 <a href="#offcanvas-mobile-menu" class="header-action-btn header-action-btn-menu offcanvas-toggle d-lg-none">
                                     <i class="icon-menu"></i>
                                 </a>

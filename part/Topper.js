@@ -22,7 +22,7 @@ const Topper = ({ user }) => {
             <div class="col-auto align-self-center">
                 <div class="header-logo">
                     <Link href='/'>
-                         <a href="#"><h3 style={{fontWeight: 'bolder'}}><span style={{color: '#ff7004'}}>my</span>Furn</h3></a>
+                        <a href="#"><h3 style={{ fontWeight: 'bolder' }}><span style={{ color: '#ff7004' }}>my</span>Furn</h3></a>
                     </Link>
                 </div>
             </div>
@@ -60,18 +60,21 @@ const Topper = ({ user }) => {
                             }
                         </ul>
                     </div>
-                    <Link href="/cart">
-                        <a href="#" class="header-action-btn header-action-btn-cart  pr-0">
-                            <i class="icon-handbag"></i>
-                            {
-                                cart &&
-                                <>
-                                    <span class="header-action-num">{cart && cart.length}</span>
-                                    <span class="cart-amount">₦{cart && calcTotalCartPrice(cart)}</span>
-                                </>
-                            }
-                        </a>
-                    </Link>
+                    {
+                        cart &&
+                        <Link href="/cart">
+                            <a href="#" class="header-action-btn header-action-btn-cart  pr-0">
+                                <i class="icon-handbag"></i>
+                                {
+                                    cart &&
+                                    <>
+                                        <span class="header-action-num">{cart && cart.length}</span>
+                                        <span class="cart-amount">₦{cart && calcTotalCartPrice(cart)}</span>
+                                    </>
+                                }
+                            </a>
+                        </Link>
+                    }
                     <a href="#offcanvas-mobile-menu" class="header-action-btn header-action-btn-menu  d-lg-none">
                         <i class="icon-menu"></i>
                     </a>

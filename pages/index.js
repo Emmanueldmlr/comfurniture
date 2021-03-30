@@ -10,6 +10,7 @@ import { getProducts, getFav } from '../store/actions/productActions';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { fetchCart } from '../store/actions/cartActions';
 import Alert from '../components/widget/Alert'
+import Others from '../part/Others';
 const Home = () => {
     const {products, fav, isLoading}  = useSelector(state => state.products)
     const {cart, cartMsg}  = useSelector(state => state.cart)
@@ -40,13 +41,8 @@ const Home = () => {
     <>
     <Slider/>
     {cartMsg ? <Alert key={new Date()} payload={cartMsg} /> : null}
-    <div class="section pb-100px pt-100px">
+    <div class="section pb-50px pt-100px">
         <div class="container">
-            <div class="row">
-                <CategoryCard/>
-                <CategoryCard/>
-                <CategoryCard/>
-            </div>
         </div>
     </div>
     <div class="section pb-100px">

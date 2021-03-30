@@ -47,6 +47,7 @@ const Nav = ({user}) => {
                                     </li>
 
                                 }
+
                             </ul>
                         </div>
                     </div>

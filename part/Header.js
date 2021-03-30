@@ -9,7 +9,7 @@ import { calcTotalCartPrice } from '../utils/cart'
 import { getUser, logout } from '../store/actions/authActions'
 
 
-const Header = () => {
+const Header = ({handleUpdate}) => {
     const { cart } = useSelector(state => state.cart)
     const { user } = useSelector(state => state.auth)
     const dispatch = useDispatch();
@@ -36,7 +36,9 @@ const Header = () => {
                     <div class="row align-self-center">
                         <div class="col-auto align-self-center">
                             <div class="header-logo">
-                                <a href="index.html"><img src="../static/assets/images/logo/logo.png" alt="Site Logo" /></a>
+                            <Link href='/'>
+                                <a href="#"><h3 style={{fontWeight: 'bolder'}}><span style={{color: '#ff7004'}}>my</span>Furn</h3></a>
+                            </Link>
                             </div>
                         </div>
 
@@ -74,21 +76,24 @@ const Header = () => {
 
                                     </ul>
                                 </div>
-                                <Link href="/cart">
-                                    <a href="#" class="header-action-btn header-action-btn-cart  pr-0">
-                                        <i class="icon-handbag"></i>
-                                        {
-                                            cart &&
-                                            <>
-                                                <span class="header-action-num">{cart && cart.length}</span>
-                                                <span class="cart-amount">₦{cart && calcTotalCartPrice(cart)}</span>
-                                            </>
-                                        }
-                                    </a>
-                                </Link>
-                                <a href="#offcanvas-mobile-menu" class="header-action-btn header-action-btn-menu  d-lg-none">
+                                {
+                                    cart &&
+                                    <Link href="/cart">
+                                        <a href="#" class="header-action-btn header-action-btn-cart  pr-0">
+                                            <i class="icon-handbag"></i>
+                                            {
+                                                cart &&
+                                                <>
+                                                    <span class="header-action-num">{cart && cart.length}</span>
+                                                    <span class="cart-amount">₦{cart && calcTotalCartPrice(cart)}</span>
+                                                </>
+                                            }
+                                        </a>
+                                    </Link>
+                                }
+                                <span onClick={()=>handleUpdate(true)} class="header-action-btn header-action-btn-menu  d-lg-none">
                                     <i class="icon-menu"></i>
-                                </a>
+                                </span>
                             </div>
                         </div>
                     </div>

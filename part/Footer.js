@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 
 const Footer = () => {
     return (
@@ -16,9 +17,9 @@ const Footer = () => {
                                     <div class="footer-links">
                                         <div class="footer-row">
                                             <ul class="align-items-center">
-                                                <li class="li"><a class="single-link" href="about.html">About us</a></li>
+                                                <li class="li"><a class="single-link" href="#">About us</a></li>
                                                 <li class="li"><a class="single-link" href="#">Delivery Information</a></li>
-                                                <li class="li"><a class="single-link" href="privacy-policy.html">Privacy & Policy</a></li>
+                                                <li class="li"><a class="single-link" href="#">Privacy & Policy</a></li>
                                                 <li class="li"><a class="single-link" href="#">Terms & Condition</a></li>
                                                 <li class="li"><a class="single-link" href="#">Manufactures</a></li>
                                             </ul>
@@ -33,13 +34,13 @@ const Footer = () => {
                                     <div class="footer-links">
                                         <div class="footer-row">
                                             <ul class="align-items-center">
-                                                <li class="li"><a class="single-link" href="my-account.html">My
-                                                Account</a>
+                                                
+                                                <li class="li">
+                                                    <Link href='/cart'>
+                                                        <a class="single-link" href="#">My Cart</a>
+                                                    </Link>
                                                 </li>
-                                                <li class="li"><a class="single-link" href="cart.html">My Cart</a></li>
-                                                <li class="li"><a class="single-link" href="login.html">Login</a></li>
-                                                <li class="li"><a class="single-link" href="wishlist.html">Wishlist</a></li>
-                                                <li class="li"><a class="single-link" href="checkout.html">Checkout</a></li>
+                                                <li class="li"><a class="single-link" href="#">Wishlist</a></li>
                                             </ul>
                                         </div>
                                     </div>
