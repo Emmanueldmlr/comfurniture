@@ -25,3 +25,9 @@ export const DeleteFav = (productId) => {
     return http.getData(url)
   };
 
+  export const CheckCartOut = (payload) => {
+    const http = new HttpService();
+    const url = "api/carts/checkout";
+    return http.postData(payload,url)
+  };
+

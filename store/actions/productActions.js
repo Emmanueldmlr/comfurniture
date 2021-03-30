@@ -1,9 +1,9 @@
 import * as actionTypes from './actionTypes';
 import { saveAccessToken,getAccessToken ,saveRefreshToken } from '../../utils/utilities';
 import Router from 'next/router';
-import { AddFav, FetchProducts, DeleteFav, FetchFav } from '../../services/productService';
+import { AddFav, FetchProducts, DeleteFav, FetchFav, CheckCartOut } from '../../services/productService';
 import { logout } from './authActions';
-import { updateCartMsg } from './cartActions';
+import { clearCart, updateCartMsg } from './cartActions';
 
 
 export const getProducts = () => {
@@ -18,6 +18,31 @@ export const getProducts = () => {
       })
       .catch((err) => {
         dispatch(updateMsg( err.response ? err.response.data.message: "Action could not be  performed"))
+        dispatch(toggleIsLoading());
+      });
+  };
+};
+
+export const submitCheckout = (payload) => {
+  return async (dispatch) => {
+    await dispatch(toggleIsLoading());
+    CheckCartOut(payload)
+      .then(async (result) => {
+        console.log(result)
+        dispatch(updateCartMsg({msg: 'Order Successfully Created', type:'SUCCESS'}))
+        await localStorage.removeItem(process.env.cartId);
+        dispatch(clearCart())
+        Router.push('/')
+        // const {data} = result
+        // dispatch(saveProducts(data.data))
+        // dispatch(toggleIsLoading());
+      })
+      .catch((err) => {
+         console.log(err)
+        if(err.status == 401){
+          dispatch(logout())
+        }
+        dispatch(updateCartMsg( err.response ? err.response.data.message: "Action could not be  performed"))
         dispatch(toggleIsLoading());
       });
   };
@@ -117,4 +142,6 @@ export const updateFav = (fav) => {
     payload: fav
   };
 };
+
+
 

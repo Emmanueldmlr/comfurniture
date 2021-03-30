@@ -31,6 +31,8 @@ const productReducer = (state = initialState, action) => {
             ...state,
             fav: action.payload
         }
+
+   
     
     default:
       return state;

@@ -108,3 +108,9 @@ export const updateCartMsg = (msg) => {
   };
 };
 
+export const clearCart = () => {
+  return {
+    type: actionTypes.CLEAR_CART,
+  };
+};
+

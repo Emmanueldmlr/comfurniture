@@ -7,3 +7,4 @@ export const UPDATE_AUTH_MSG = 'UPDATE_AUTH_MSG';
 export const UPDATE_USER_INFO = 'UPDATE_USER_INFO';
 export const CLEAR_USER_DETAILS = 'CLEAR_USER_DETAILS';
 export const UPDATE_FAV = 'UPDATE_FAV';
+export const CLEAR_CART = 'CLEAR_CART';

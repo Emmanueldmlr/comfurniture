@@ -18,6 +18,12 @@ const cartReducer = (state = initialState, action) => {
           ...state,
           cartMsg: action.payload,
         };
+
+    case types.CLEAR_CART:
+      return {
+          ...state,
+          cart: null,
+        };
     case types.TOGGLE_ISLOADING:
         return {
             ...state,

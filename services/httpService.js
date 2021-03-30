@@ -9,7 +9,8 @@ class HttpService {
   }
 
   postData = async (payload,url) => {
-    return axios.post(this.baseUrl + url, payload)
+    const AuthStr = 'Bearer '.concat(this.token); 
+    return axios.post(this.baseUrl + url, payload, { headers: { Authorization: AuthStr } })
   };
 
   getData = async (url) => {
