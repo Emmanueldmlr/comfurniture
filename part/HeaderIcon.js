@@ -93,8 +93,7 @@ const HeaderIcon = () => {
                                         <li><a class="dropdown-item" href="login.html">Sign in</a></li>
                                     </ul>
                                 </div>
-                                {
-                                    cart &&
+                                
                                     <Link href="/cart">
                                         <a href="#" class="header-action-btn header-action-btn-cart  pr-0">
                                             <i class="icon-handbag"></i>
@@ -107,7 +106,7 @@ const HeaderIcon = () => {
                                             }
                                         </a>
                                     </Link>
-                                }
+                               
                                 <a href="#offcanvas-mobile-menu" class="header-action-btn header-action-btn-menu offcanvas-toggle d-lg-none">
                                     <i class="icon-menu"></i>
                                 </a>

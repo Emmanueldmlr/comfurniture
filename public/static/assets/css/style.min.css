@@ -11745,7 +11745,7 @@ body.offcanvas-open {
     }
     .offcanvas.offcanvas-mobile-menu {
         right: auto;
-        left: -200px;
+        left: -230px;
         padding: 0;
         /* transform: translateX(-100%); */
         width: 350px;

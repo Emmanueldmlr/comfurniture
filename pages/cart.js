@@ -17,9 +17,9 @@ const Cart = () => {
         }
     }, [])
 
- 
+
     return (
-    <>
+        <>
             {cartMsg ? <Alert key={new Date()} payload={cartMsg} /> : null}
 
             <div class="cart-main-area pt-100px pb-100px">
@@ -42,12 +42,12 @@ const Cart = () => {
                                         </thead>
                                         <tbody>
                                             {
-                                                cart ? 
-                                                 cart.map( productInCart => (
-                                                    <CartRow productInCart={productInCart}/>
-                                                 ))
-                                                :
-                                                <p>No Product in Cart</p>
+                                                cart ?
+                                                    cart.map(productInCart => (
+                                                        <CartRow productInCart={productInCart} />
+                                                    ))
+                                                    :
+                                                    <p>No Product in Cart</p>
                                             }
                                         </tbody>
                                     </table>
@@ -57,7 +57,7 @@ const Cart = () => {
                                         <div class="cart-shiping-update-wrapper">
                                             <div class="cart-shiping-update">
                                                 <Link href='/'>
-                                                     <a href="#">Continue Shopping</a>
+                                                    <a href="#">Continue Shopping</a>
                                                 </Link>
                                             </div>
                                         </div>
@@ -72,11 +72,13 @@ const Cart = () => {
                                             <h4 class="cart-bottom-title section-bg-gary-cart">Cart Total</h4>
                                         </div>
                                         <h5>Total products <span>{cart && calcTotalCartPrice(cart)}</span></h5>
-                                    
+
                                         <h4 class="grand-totall-title">Grand Total <span>{cart && calcTotalCartPrice(cart)}</span></h4>
-                                        <Link href='/checkout'>
-                                            <a href="#">Proceed to Checkout</a>
-                                        </Link>
+                                        {
+                                            cart && cart.length > 0 && <Link href='/checkout'>
+                                                <a href="#">Proceed to Checkout</a>
+                                            </Link>
+                                        }
                                     </div>
                                 </div>
                             </div>
@@ -84,8 +86,8 @@ const Cart = () => {
                     </div>
                 </div>
             </div>
-    </>
-  )
+        </>
+    )
 }
 
 export default Wrapper(Cart)

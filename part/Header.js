@@ -76,8 +76,7 @@ const Header = ({handleUpdate}) => {
 
                                     </ul>
                                 </div>
-                                {
-                                    cart &&
+                                
                                     <Link href="/cart">
                                         <a href="#" class="header-action-btn header-action-btn-cart  pr-0">
                                             <i class="icon-handbag"></i>
@@ -90,7 +89,7 @@ const Header = ({handleUpdate}) => {
                                             }
                                         </a>
                                     </Link>
-                                }
+                                
                                 <span onClick={()=>handleUpdate(true)} class="header-action-btn header-action-btn-menu  d-lg-none">
                                     <i class="icon-menu"></i>
                                 </span>

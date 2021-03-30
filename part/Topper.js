@@ -60,8 +60,7 @@ const Topper = ({ user }) => {
                             }
                         </ul>
                     </div>
-                    {
-                        cart &&
+                    
                         <Link href="/cart">
                             <a href="#" class="header-action-btn header-action-btn-cart  pr-0">
                                 <i class="icon-handbag"></i>
@@ -74,7 +73,7 @@ const Topper = ({ user }) => {
                                 }
                             </a>
                         </Link>
-                    }
+                   
                     <a href="#offcanvas-mobile-menu" class="header-action-btn header-action-btn-menu  d-lg-none">
                         <i class="icon-menu"></i>
                     </a>

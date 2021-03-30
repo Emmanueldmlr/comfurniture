@@ -40,6 +40,7 @@ const Footer = () => {
                                                         <a class="single-link" href="#">My Cart</a>
                                                     </Link>
                                                 </li>
+                                                
                                                 <li class="li"><a class="single-link" href="#">Wishlist</a></li>
                                             </ul>
                                         </div>
