@@ -6,14 +6,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/router'
 
 import Alert from '../../components/widget/Alert'
-import { getProducts } from '../../store/actions/productActions';
+import { getFav, getProducts } from '../../store/actions/productActions';
 import {fetchFirstNthItems} from '../../utils/utilities'
 import Error from 'next/error'
 import { addProductToCart } from '../../store/actions/cartActions';
 
 const SingleProduct = () => {
     const router = useRouter()
-    const { products, isLoading } = useSelector(state => state.products)
+    const { products, fav, isLoading } = useSelector(state => state.products)
     const { cart, cartMsg } = useSelector(state => state.cart)
     const dispatch = useDispatch();
     const [product, setProduct] = useState(null)
@@ -28,6 +28,9 @@ const SingleProduct = () => {
             console.log(findProduct(products))
             setProduct(findProduct(products))
         }
+        if(!fav){
+            dispatch(getFav())
+        }
     
     }, [id, products])
 
@@ -37,6 +40,10 @@ const SingleProduct = () => {
     const findProductInCart = (productId)=>{
         const productInCart = cart && cart.find(prod => prod.productId == productId)
         return productInCart ? true : false
+    }
+    const findProductInFav = (productId)=>{
+        const productInFav = fav && fav.find(prod => prod.productId == productId)
+        return productInFav ? true : false
     }
 
     if(products && !product){
@@ -188,7 +195,7 @@ const SingleProduct = () => {
                                         products && 
                                     
                                         fetchFirstNthItems(products, 8).map(prod=> (
-                                        <ProductCard productInCart={findProductInCart(prod.productId)} product={prod}/>
+                                        <ProductCard productInFav={findProductInFav(prod.productId)} favourite={fav} productInCart={findProductInCart(prod.productId)} product={prod}/>
                                             ))
                                         }
                                     </div>

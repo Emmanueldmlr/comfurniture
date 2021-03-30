@@ -23,21 +23,31 @@ const Nav = ({user}) => {
                                          <a href="#">Products</a>
                                     </Link>
                                 </li>
+                                <li>
+                                    {
+                                        user &&
+                                        <Link href='/favourite'>
+                                            <a href="#">Favourites</a>
+                                        </Link>
+                                    }
+                                </li>
+                                
                                 {
-                                            !user &&
-                                            <li>
-                                                <Link href='/login'>
-                                                    <a  href="">Login</a>
-                                                </Link>
-                                            </li>
-                                        }
-                                        {
-                                            user &&
-                                            <li>
-                                                <a onClick={() => dispatch(logout())}  href="">Logout</a>
-                                            </li>
+                                    !user &&
+                                    <li>
+                                        <Link href='/login'>
+                                            <a  href="">Login</a>
+                                        </Link>
+                                    </li>
+                                }
+                                {
+                                    user &&
+                                    <li>
+                                        <a onClick={() => dispatch(logout())}  href="">Logout</a>
+                                    </li>
 
-                                        }
+                                }
+                             
                                 <li><a href="about.html">About us</a></li>
                                 <li><a href="about.html">Faqs</a></li>
                                 <li><a href="about.html">Contact</a></li>
