@@ -20,6 +20,23 @@ export const getProducts = () => {
   };
 };
 
+export const updateFavourite = (payload) => {
+  return async (dispatch) => {
+    //const {productId, type}
+    // FetchProducts()
+    //   .then(async (result) => {
+    //     console.log(result)
+    //     const {data} = result
+    //     dispatch(saveProducts(data.data))
+    //     dispatch(toggleIsLoading());
+    //   })
+    //   .catch((err) => {
+    //     dispatch(updateMsg( err.response ? err.response.data.message: "Action could not be  performed"))
+    //     dispatch(toggleIsLoading());
+    //   });
+  };
+}
+
 export const saveProducts = (products) => {
   return {
     type: actionTypes.SAVE_PRODUCTS,

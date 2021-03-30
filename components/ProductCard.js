@@ -1,17 +1,32 @@
 
 import Link from 'next/link'
+import Router from 'next/router';
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addProductToCart, deleteProductFromCart } from '../store/actions/cartActions'
 
-const ProductCard = ({product, productInCart}) => {
+const ProductCard = ({product, productInCart, productInFav}) => {
    const dispatch =  useDispatch()
-   const cart = useSelector(state => state.cart)
+   const {user} = useSelector(state => state.auth)
+
    const handleAddProductToCart = (product) => {
         dispatch(addProductToCart(product,1))
    }
    const handleRemoveProductFromCart = (product) => {
         dispatch(deleteProductFromCart(product.productId))
+   }
+
+   const handleFavourite = (productId) => {
+        if(!user){
+            Router.push('/login')
+        }
+        else{
+            const payload = {
+                productId,
+                type: productInFav ? "remove" : "add"
+            }
+            //const 
+        }
    }
 
  
@@ -21,7 +36,7 @@ const ProductCard = ({product, productInCart}) => {
             <div class="product">
                 <div class="thumb">
                     <Link href={"/products/" + product.productId}>
-                        <a href="#" class="image">
+                        <a href="" class="image">
                             <img src={"../static/assets/images/product-image/" + product.productPicture } alt="Product" />
                             <img class="hover-image" src={"../static/assets/images/product-image/" + product.productPicture } alt="Product" />
                         </a>
@@ -30,8 +45,8 @@ const ProductCard = ({product, productInCart}) => {
                         <span class="new">New</span>
                     </span>
                     <div class="actions">
-                        <a href="#" class="action wishlist" title="Wishlist"><i
-                            class="icon-heart"></i></a>
+                        <span style={{cursor: 'pointer'}} onClick={()=>handleFavourite(product.productId)} href="#" class="action wishlist" title="Wishlist"><i
+                            class="icon-heart"></i></span>
 
                     </div>
                     {
@@ -55,7 +70,6 @@ const ProductCard = ({product, productInCart}) => {
                 </div>
             </div>
         </div>
-
     )
 }
 

@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 const Slider = () => {
@@ -17,7 +18,9 @@ const Slider = () => {
                                     <span class="category">New Products</span>
                                     <h2 class="title-1">Flexible Sofa Set</h2>
                                     <p class="w-100">Torem ipsum dolor sit amet, consectetur adipisicing elitsed do eiusmo tempor incididunt ut labore et dolore magna</p>
-                                    <a href="#" class="btn btn-lg btn-primary btn-hover-dark mt-5">Shop Now</a>
+                                    <Link href='/products/view-products'>
+                                        <a href="#" class="btn btn-lg btn-primary btn-hover-dark mt-5">Shop Now</a>
+                                    </Link>
                                 </div>
                             </div>
                         </div>

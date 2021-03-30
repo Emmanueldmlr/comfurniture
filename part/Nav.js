@@ -1,7 +1,11 @@
 import React from 'react'
 import Link from 'next/link'
+import { useSelector, useDispatch } from 'react-redux'
+import { logout } from '../store/actions/authActions'
 
 const Nav = ({user}) => {
+    const dispatch = useDispatch();
+
     return (
         <div class="bg-gray d-none d-lg-block sticky-nav">
             <div class="container position-relative">
@@ -14,7 +18,11 @@ const Nav = ({user}) => {
                                          <a href="#">Home</a>
                                     </Link>
                                  </li>   
-                                <li><a href="about.html">Products</a></li>
+                                <li>
+                                    <Link href='/products/view-products'>
+                                         <a href="#">Products</a>
+                                    </Link>
+                                </li>
                                 {
                                             !user &&
                                             <li>

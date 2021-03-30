@@ -4,6 +4,7 @@ const initialState = {
   isLoading: false,
   products: null,
   msg: null,
+  fav:null
 };
 
 const productReducer = (state = initialState, action) => {
