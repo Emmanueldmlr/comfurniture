@@ -195,7 +195,7 @@ const SingleProduct = () => {
                                         products && 
                                     
                                         fetchFirstNthItems(products, 8).map(prod=> (
-                                        <ProductCard productInFav={findProductInFav(prod.productId)} favourite={fav} productInCart={findProductInCart(prod.productId)} product={prod}/>
+                                             <ProductCard productInFav={findProductInFav(prod.productId)} favourite={fav} productInCart={findProductInCart(prod.productId)} product={prod}/>
                                             ))
                                         }
                                     </div>

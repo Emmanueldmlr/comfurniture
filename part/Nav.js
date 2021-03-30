@@ -23,14 +23,6 @@ const Nav = ({user}) => {
                                          <a href="#">Products</a>
                                     </Link>
                                 </li>
-                                <li>
-                                    {
-                                        user &&
-                                        <Link href='/favourite'>
-                                            <a href="#">Favourites</a>
-                                        </Link>
-                                    }
-                                </li>
                                 
                                 {
                                     !user &&
@@ -40,6 +32,14 @@ const Nav = ({user}) => {
                                         </Link>
                                     </li>
                                 }
+                                <li>
+                                    {
+                                        user &&
+                                        <Link href='/favourite'>
+                                            <a href="#">Favourites</a>
+                                        </Link>
+                                    }
+                                </li>
                                 {
                                     user &&
                                     <li>
@@ -47,10 +47,6 @@ const Nav = ({user}) => {
                                     </li>
 
                                 }
-                             
-                                <li><a href="about.html">About us</a></li>
-                                <li><a href="about.html">Faqs</a></li>
-                                <li><a href="about.html">Contact</a></li>
                             </ul>
                         </div>
                     </div>

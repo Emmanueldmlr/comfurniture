@@ -8,30 +8,7 @@ const Footer = () => {
                 <div class="footer-top">
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-6 col-lg-4 mb-md-30px mb-lm-30px" data-aos="fade-up" data-aos-delay="200">
-                                <div class="single-wedge">
-                                    <h4 class="footer-herading">about us</h4>
-                                    <p class="about-text">Lorem ipsum dolor sit amet cons adipisicing elit sed do eiusm tempor incididunt ut labor et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                            </p>
-                                    <ul class="link-follow">
-                                        <li class="li">
-                                            <a class="paypal icon-paypal m-0" title="Paypal" href="#"></a>
-                                        </li>
-                                        <li class="li">
-                                            <a class="tumblr icon-social-tumblr" title="Tumblr" href="#"></a>
-                                        </li>
-                                        <li class="li">
-                                            <a class="twitter icon-social-twitter" title="Twitter" href="#"></a>
-                                        </li>
-                                        <li class="li">
-                                            <a class="pinterest icon-social-pinterest" title="Pinterest" href="#"></a>
-                                        </li>
-                                        <li class="li">
-                                            <a class="linkedin icon-social-linkedin" title="Linkedin" href="#"></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+                           
 
                             <div class="col-md-6 col-sm-6 col-lg-3 mb-md-30px mb-lm-30px" data-aos="fade-up" data-aos-delay="400">
                                 <div class="single-wedge">

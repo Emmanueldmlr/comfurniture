@@ -16,8 +16,8 @@ const Slider = () => {
                             <div class="col-md-8 offset-2 align-self-center m-auto">
                                 <div class="hero-slide-content hero-slide-content-2  text-center">
                                     <span class="category">New Products</span>
-                                    <h2 class="title-1">Flexible Sofa Set</h2>
-                                    <p class="w-100">Torem ipsum dolor sit amet, consectetur adipisicing elitsed do eiusmo tempor incididunt ut labore et dolore magna</p>
+                                    <h4 class="title-1">Exotic Minimal Furniture</h4>
+                                    <p class="w-100">Choose from a range of well-crafted, premium quality furnitures, living room lightings, paintings and wall shelves</p>
                                     <Link href='/products/view-products'>
                                         <a href="#" class="btn btn-lg btn-primary btn-hover-dark mt-5">Shop Now</a>
                                     </Link>

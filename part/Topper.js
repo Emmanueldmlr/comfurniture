@@ -21,7 +21,9 @@ const Topper = ({ user }) => {
         <div class="row align-self-center">
             <div class="col-auto align-self-center">
                 <div class="header-logo">
-                    <a href="index.html"><img src="../static/assets/images/logo/logo.png" alt="Site Logo" /></a>
+                    <Link href='/'>
+                         <a href="#"><h3 style={{fontWeight: 'bolder'}}><span style={{color: '#ff7004'}}>my</span>Furn</h3></a>
+                    </Link>
                 </div>
             </div>
 

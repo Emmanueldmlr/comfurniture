@@ -55,7 +55,7 @@ const Home = () => {
                 <div class="col-md-12" data-aos="fade-up">
                     <div class="section-title text-center mb-11">
                         <h2 class="title">Our Products</h2>
-                        <p class="sub-title">Torem ipsum dolor sit amet, consectetur adipisicing elitsed do eiusmo tempor incididunt ut labore
+                        <p class="sub-title">View our wide range of products
                         </p>
                     </div>
                 </div>
