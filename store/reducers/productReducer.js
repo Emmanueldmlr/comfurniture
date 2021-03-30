@@ -25,6 +25,13 @@ const productReducer = (state = initialState, action) => {
             ...state,
             msg: action.payload
         }
+
+    case types.UPDATE_FAV:
+        return {
+            ...state,
+            fav: action.payload
+        }
+    
     default:
       return state;
   }

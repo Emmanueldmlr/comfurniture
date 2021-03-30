@@ -17,9 +17,9 @@ class HttpService {
     return axios.get(this.baseUrl + url, { headers: { Authorization: AuthStr } })
   };
   
-  putData = async (formData,url) => {
+  putData = async (formData='',url) => {
     const AuthStr = 'Bearer '.concat(this.token); 
-    return axios.put(this.baseUrl + url, formData, { headers: { Authorization: AuthStr } })
+    return axios.put(this.baseUrl + url, formData, { headers: { Authorization: AuthStr, 'Content-Type': 'application/json; charset=utf-8' } })
   };
 
   deleteData = async (url) => {

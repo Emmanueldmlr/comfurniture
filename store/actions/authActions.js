@@ -77,8 +77,9 @@ export const getUser = () => {
             await dispatch(updateUserInfo(user))
           })
           .catch((err) => {  
-            console.log(err)
-            dispatch(logout())
+            if(err.response.status){
+              dispatch(logout())
+            }
             //dispatch(toggleIsLoading());
           });
     }

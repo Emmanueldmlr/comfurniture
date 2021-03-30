@@ -6,12 +6,12 @@ import CategoryCard from '../components/CategoryCard';
 import  Slider  from '../components/Slider';
 import ProductCard from '../components/ProductCard';
 import { useSelector, useDispatch } from 'react-redux';
-import { getProducts } from '../store/actions/productActions';
+import { getProducts, getFav } from '../store/actions/productActions';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { fetchCart } from '../store/actions/cartActions';
 import Alert from '../components/widget/Alert'
 const Home = () => {
-    const {products, isLoading}  = useSelector(state => state.products)
+    const {products, fav, isLoading}  = useSelector(state => state.products)
     const {cart, cartMsg}  = useSelector(state => state.cart)
     const dispatch = useDispatch();
     useEffect(() => {
@@ -21,11 +21,19 @@ const Home = () => {
         if(!cart){
             dispatch(fetchCart())
         }
+        if(!fav){
+            dispatch(getFav())
+        }
     }, [])
 
     const findProductInCart = (productId)=>{
         const productInCart = cart && cart.find(prod => prod.productId == productId)
         return productInCart ? true : false
+    }
+
+    const findProductInFav = (productId)=>{
+        const productInFav = fav && fav.find(prod => prod.productId == productId)
+        return productInFav ? true : false
     }
 
   return (
@@ -66,7 +74,7 @@ const Home = () => {
                                     :
                                     products ? 
                                      products.map(product => (
-                                        <ProductCard productInCart={findProductInCart(product.productId)} product= {product}/>
+                                        <ProductCard favourite={fav} productInFav={findProductInFav(product.productId)} productInCart={findProductInCart(product.productId)} product= {product}/>
                                      ))
                                     :
                                     <div class=" text-center">
